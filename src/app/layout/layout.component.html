@@ -1,0 +1,18 @@
+<div class="layout-container">
+  <div class="header-container overlay">
+  </div>
+  <div class="main-container">
+    <div class="sidebar-container">
+      <ul class="nav-container">
+        <li class="nav-item" [routerLink]="['users']">User Management</li>
+        <li class="nav-item" [routerLink]="['products']">Product Management</li>
+        <li class="nav-item" [routerLink]="['companies']">Companies</li>
+        <li class="nav-item" [routerLink]="['circulars']">Circulars</li>
+        <li class="nav-item">Logout</li>
+      </ul>
+    </div>
+    <div class="main-content-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
