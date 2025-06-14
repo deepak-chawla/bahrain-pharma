@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Assign Route to User</h2>
+<mat-dialog-content>
+    <form [formGroup]="assignRouteForm">
+        <!-- Dropdown for selecting User ID -->
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>User</mat-label>
+            <mat-select formControlName="userID" required>
+                <mat-option *ngFor="let user of users" [value]="user.id">
+                    {{ user.username }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Dropdown for selecting Route ID -->
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Route</mat-label>
+            <mat-select formControlName="routeID" required>
+                <mat-option *ngFor="let route of routes" [value]="route.id">
+                    {{ route.area }} - {{ route.category }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Dropdown for selecting Day -->
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Day</mat-label>
+            <mat-select formControlName="day" required>
+                <mat-option *ngFor="let day of days" [value]="day">
+                    {{ day }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="assignRouteToUser()">Assign Route to User</button>
+</mat-dialog-actions>

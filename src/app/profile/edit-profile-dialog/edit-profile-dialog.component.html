@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Edit Profile</h2>
+<mat-dialog-content>
+    <form [formGroup]="profileForm">
+        <!-- First Name -->
+        <mat-form-field class="full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+        </mat-form-field>
+
+        <!-- Last Name -->
+        <mat-form-field class="full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+        </mat-form-field>
+
+        <!-- Username -->
+        <mat-form-field class="full-width">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="userName" readonly/>
+        </mat-form-field>
+
+        <!-- Channel -->
+        <mat-form-field class="full-width">
+            <mat-label>Channel</mat-label>
+            <input matInput formControlName="channel" />
+        </mat-form-field>
+
+        <!-- Role -->
+        <mat-form-field class="full-width">
+            <mat-label>Role</mat-label>
+            <input matInput formControlName="role" />
+        </mat-form-field>
+
+        <!-- Mobile Number -->
+        <mat-form-field class="full-width">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput formControlName="mobileNo" />
+        </mat-form-field>
+
+        <!-- Date of Birth -->
+        <mat-form-field class="full-width">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput type="date" formControlName="dateOfBirth" />
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<!-- Dialog Actions -->
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()">Update</button>
+</mat-dialog-actions>

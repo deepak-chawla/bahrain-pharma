@@ -1,0 +1,73 @@
+<div class="spinner-container">
+    <div class="spinner-border text-dark" *ngIf="loadingService.loading"></div>
+</div>
+
+<div *ngIf="!loadingService.loading" id="content-wrapper" class="d-flex flex-column align-items-center">
+    <div id="content" class="container-fluid mt-4 px-3">
+        <!-- User Profile Card -->
+        <mat-card class="shadow-lg rounded p-3" style="width: 100%; margin: 0; padding: 0;">
+            <mat-card-header class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="mat-display-3" *ngIf="user.firstName != null && user.lastName != null">
+                        <b>{{ user?.firstName }} {{ user?.lastName }}</b>
+                    </h1>
+                    <h1 class="mat-display-3" *ngIf="user.firstName == null && user.lastName == null">
+                        <b>{{ user?.userName }}</b>
+                    </h1>
+                </div>
+                <button mat-icon-button color="primary" (click)="openEditProfileDialog()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-card-header>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-content>
+                <div class="row">
+                    <!-- Left Column: User Details Table -->
+                    <div class="col-md-8">
+                        <table class="table table-borderless">
+                            <tbody>
+                            <tr>
+                                <td><b>Username:</b></td>
+                                <td>{{ user?.userName }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Date of Birth:</b></td>
+                                <td>{{ user?.dateOfBirth }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Mobile Number:</b></td>
+                                <td>{{ user?.mobileNo }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Channel:</b></td>
+                                <td>{{ user?.channel }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Role:</b></td>
+                                <td>{{ user?.role }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Right Column: Profile Picture and Upload Button -->
+                    <div class="col-md-4 d-flex flex-column justify-content-center align-items-center">
+                        <!-- Profile Picture Display -->
+                        <img
+                                [src]="user?.profilePicture || 'https://via.placeholder.com/150?text=Profile'"
+                                alt="Profile Picture"
+                                class="rounded-circle border border-primary mb-3"
+                                style="width: 150px; height: 150px; object-fit: cover;"
+                        />
+
+                        <!-- File Input Button -->
+                        <input type="file" id="file" class="inputfile" (change)="onProfilePictureChange($event)" accept="image/*" hidden/>
+                        <label for="file" class="btn btn-primary">Choose Profile Picture</label>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

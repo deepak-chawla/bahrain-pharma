@@ -1,0 +1,51 @@
+<h2>User Routes</h2>
+<div class="header-container">
+    <!-- Dropdown to filter routes by day -->
+    <mat-form-field appearance="fill" class="day-filter-dropdown">
+        <mat-label>Filter Routes By Day</mat-label>
+        <mat-select [(value)]="selectedDay" (selectionChange)="onDayChange()">
+            <mat-option
+                    *ngFor="let day of ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY']"
+                    [value]="day">
+                {{ day }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- Button to open the Assign Route dialog -->
+    <button mat-raised-button color="primary" class="assign-route-button" (click)="openAssignRouteDialog()">
+        Assign Route to User
+    </button>
+</div>
+
+<table mat-table [dataSource]="userRoutesByDay" class="mat-elevation-z8 full-width">
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> Username</th>
+        <td mat-cell *matCellDef="let route"> {{ route.userDetails.username }}</td>
+    </ng-container>
+
+    <!-- Route Area Column -->
+    <ng-container matColumnDef="routeArea">
+        <th mat-header-cell *matHeaderCellDef> Route Area</th>
+        <td mat-cell *matCellDef="let route"> {{ route.routes.area }}</td>
+    </ng-container>
+
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category</th>
+        <td mat-cell *matCellDef="let route"> {{ route.routes.category }}</td>
+    </ng-container>
+
+    <!-- Route Image Column -->
+    <ng-container matColumnDef="routeImage">
+        <th mat-header-cell *matHeaderCellDef> Route Image</th>
+        <td mat-cell *matCellDef="let route">
+            <a [href]="route.routes.routeImageUrl" target="_blank">view</a>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

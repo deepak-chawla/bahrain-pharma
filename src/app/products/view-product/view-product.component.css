@@ -1,0 +1,33 @@
+.product-detail-container {
+    padding: 20px;
+}
+
+.product-detail-flex {
+    display: flex; /* Flexbox container */
+    flex-wrap: wrap; /* Wrap items to handle responsiveness */
+    gap: 20px; /* Spacing between the columns */
+}
+
+.product-image-section, .product-details-section {
+    flex: 1; /* Allow both sections to grow equally */
+    min-width: 300px; /* Minimum width for responsiveness */
+    max-width: 600px; /* Maximum width to prevent excessively wide columns */
+}
+
+.product-image-card, .product-detail-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+mat-card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}

@@ -1,0 +1,27 @@
+.header-container {
+    display: flex;
+    justify-content: flex-end; /* Align button to the right */
+    margin-bottom: 20px;
+}
+
+.add-route-button {
+    margin-top: 10px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+mat-card {
+    margin-bottom: 20px;
+}
+
+mat-dialog-actions {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+mat-form-field {
+    margin-right: 16px;
+}

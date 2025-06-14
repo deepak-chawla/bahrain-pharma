@@ -1,0 +1,8 @@
+.full-width {
+    width: 100%; /* Ensure the mat-form-field takes 100% of the available width */
+}
+
+mat-form-field {
+    display: block; /* Ensures the form fields are block elements */
+    box-sizing: border-box; /* Ensures padding and borders are included in the element's total width */
+}

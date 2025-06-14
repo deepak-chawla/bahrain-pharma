@@ -1,35 +1,20 @@
-export class Products {
-   
-    productId: number;
 
+export class Product{
+    id: number;
     productName: string;
-
-    productDesc: string;
-
-    productCategory: string;
-
-    manufacturerId: number;
-
-    manufacturerName: string;
-
-    noOfUnits: number;
-
-    weightOfUnit: number;
-
-    totalWeightOfUnits: number;
-
-    unitCost: number;
-
-    landedCost: number;
-
-    totalCost: number;
-
-    totalProductValue: number;
-
-    lastUpdated: Date;
-
-    productReceived: Date;
-
-    productLocation: string;
-    
+    supplier: string;
+    wp: number;
+    code: string;
+    barcode: string;
+    packSize: string;
+    cartoonSize: string;
+    category: string;
+    unit: string;
+    tax: string;
+    hsCode: string;
+    country: string;
+    length: number;
+    width: number;
+    height: number;
+    grossWeight: number;
 }

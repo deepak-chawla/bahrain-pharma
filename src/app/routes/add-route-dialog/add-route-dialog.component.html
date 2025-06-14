@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Add New Route</h2>
+<mat-dialog-content>
+    <form [formGroup]="addRouteForm">
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Route Name</mat-label>
+            <input matInput placeholder="Route Name" formControlName="routeName" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Area</mat-label>
+            <input matInput placeholder="Area" formControlName="area" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Category</mat-label>
+            <input matInput placeholder="Category" formControlName="category" required>
+        </mat-form-field>
+
+        <!-- File input for route image -->
+        <div class="full-width">
+            <label for="routeImage">Upload Route Image:</label>
+            <input type="file" id="routeImage" (change)="handleFileInput($event)">
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="addRoute()">Add Route</button>
+</mat-dialog-actions>

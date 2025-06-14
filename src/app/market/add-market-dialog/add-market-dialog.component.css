@@ -1,0 +1,26 @@
+.full-width {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.place-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+/* Scrollable container styling */
+.scrollable-container {
+    max-height: 300px; /* Adjust height as needed */
+    overflow-y: auto;
+    margin-bottom: 16px;
+    padding-right: 8px; /* To prevent content cutoff by scrollbar */
+}
+
+mat-dialog-content {
+    max-height: 500px; /* Adjust height to control overall dialog size */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}

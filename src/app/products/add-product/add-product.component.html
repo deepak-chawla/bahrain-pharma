@@ -1,0 +1,331 @@
+<div>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div class="container-fluid">
+                <h2 class="text-dark mb-4">Add Product</h2>
+                <mat-card class="mat-elevation-z4">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <p class="text-primary m-0 font-weight-bold">Product Details</p>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <form
+                                (ngSubmit)="saveProduct(addForm.value)"
+                                #addForm="ngForm"
+                                class="needs-validation"
+                        >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Product Name</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.productName"
+                                                type="text"
+                                                placeholder="Product Name"
+                                                name="productName"
+                                                required
+                                                #productName="ngModel"
+                                        />
+                                        <mat-error *ngIf="productName.invalid && productName.touched">
+                                            Product Name is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Supplier</mat-label>
+                                        <mat-select
+                                                [(ngModel)]="product.supplier"
+                                                name="supplier"
+                                                required
+                                                #supplier="ngModel"
+                                        >
+                                            <mat-option value="" disabled>Select a Supplier</mat-option>
+                                            <mat-option *ngFor="let supplier of suppliers" [value]="supplier.id">
+                                                {{ supplier.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="supplier.invalid && supplier.touched">
+                                            Supplier is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>WP</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.wp"
+                                                type="number"
+                                                placeholder="WP"
+                                                name="wp"
+                                                required
+                                                #wp="ngModel"
+                                        />
+                                        <mat-error *ngIf="wp.invalid && wp.touched">
+                                            WP is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Code</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.code"
+                                                type="text"
+                                                placeholder="Code"
+                                                name="code"
+                                                required
+                                                #code="ngModel"
+                                        />
+                                        <mat-error *ngIf="code.invalid && code.touched">
+                                            Code is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Barcode</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.barcode"
+                                                type="text"
+                                                placeholder="Barcode"
+                                                name="barcode"
+                                                required
+                                                #barcode="ngModel"
+                                        />
+                                        <mat-error *ngIf="barcode.invalid && barcode.touched">
+                                            Barcode is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Pack Size</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.packSize"
+                                                type="text"
+                                                placeholder="Pack Size"
+                                                name="packSize"
+                                                required
+                                                #packSize="ngModel"
+                                        />
+                                        <mat-error *ngIf="packSize.invalid && packSize.touched">
+                                            Pack Size is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Cartoon Size</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.cartoonSize"
+                                                type="text"
+                                                placeholder="Cartoon Size"
+                                                name="cartoonSize"
+                                                required
+                                                #cartoonSize="ngModel"
+                                        />
+                                        <mat-error *ngIf="cartoonSize.invalid && cartoonSize.touched">
+                                            Cartoon Size is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Category</mat-label>
+                                        <mat-select
+                                                [(ngModel)]="product.category"
+                                                name="category"
+                                                required
+                                                #category="ngModel"
+                                        >
+                                            <mat-option value="" disabled>Select a Category</mat-option>
+                                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                                                {{ category.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="category.invalid && category.touched">
+                                            Category is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Unit</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.unit"
+                                                type="text"
+                                                placeholder="Unit"
+                                                name="unit"
+                                                required
+                                                #unit="ngModel"
+                                        />
+                                        <mat-error *ngIf="unit.invalid && unit.touched">
+                                            Unit is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Tax</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.tax"
+                                                type="text"
+                                                placeholder="Tax"
+                                                name="tax"
+                                                required
+                                                #tax="ngModel"
+                                        />
+                                        <mat-error *ngIf="tax.invalid && tax.touched">
+                                            Tax is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>HS Code</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.hsCode"
+                                                type="text"
+                                                placeholder="HS Code"
+                                                name="hsCode"
+                                                required
+                                                #hsCode="ngModel"
+                                        />
+                                        <mat-error *ngIf="hsCode.invalid && hsCode.touched">
+                                            HS Code is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Country</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.country"
+                                                type="text"
+                                                placeholder="Country"
+                                                name="country"
+                                                required
+                                                #country="ngModel"
+                                        />
+                                        <mat-error *ngIf="country.invalid && country.touched">
+                                            Country is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Length</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.length"
+                                                type="number"
+                                                placeholder="Length"
+                                                name="length"
+                                                required
+                                                #length="ngModel"
+                                        />
+                                        <mat-error *ngIf="length.invalid && length.touched">
+                                            Length is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Width</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.width"
+                                                type="number"
+                                                placeholder="Width"
+                                                name="width"
+                                                required
+                                                #width="ngModel"
+                                        />
+                                        <mat-error *ngIf="width.invalid && width.touched">
+                                            Width is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Height</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.height"
+                                                type="number"
+                                                placeholder="Height"
+                                                name="height"
+                                                required
+                                                #height="ngModel"
+                                        />
+                                        <mat-error *ngIf="height.invalid && height.touched">
+                                            Height is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width" appearance="fill">
+                                        <mat-label>Gross Weight</mat-label>
+                                        <input
+                                                matInput
+                                                [(ngModel)]="product.grossWeight"
+                                                type="number"
+                                                placeholder="Gross Weight"
+                                                name="grossWeight"
+                                                required
+                                                #grossWeight="ngModel"
+                                        />
+                                        <mat-error *ngIf="grossWeight.invalid && grossWeight.touched">
+                                            Gross Weight is a required field
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button mat-raised-button color="primary" type="submit" name="submit">
+                                        Add Product
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

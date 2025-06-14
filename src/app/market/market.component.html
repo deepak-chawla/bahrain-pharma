@@ -1,0 +1,58 @@
+<h2>Markets</h2>
+
+<!-- Header container with market selection and buttons -->
+<div class="header-container">
+
+    <!-- Dropdown for selecting a market -->
+    <div class="market-select-container">
+        <mat-form-field appearance="fill" class="market-dropdown">
+            <mat-label>Select a Market</mat-label>
+            <mat-select (selectionChange)="onMarketSelect($event.value)">
+                <mat-option *ngFor="let market of markets" [value]="market.marketName">
+                    {{ market.marketName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Button to delete the selected market -->
+        <button
+                mat-icon-button
+                color="warn"
+                class="delete-market-button"
+                (click)="deleteSelectedMarket()"
+                [disabled]="!selectedMarket"
+                matTooltip="Delete Selected Market"
+        >
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+
+    <!-- Button to add a new market -->
+    <button mat-raised-button color="primary" class="add-market-button" (click)="openAddMarketDialog()">
+        Add Market
+    </button>
+</div>
+
+<!-- Display selected market's places -->
+<div class="places-container" *ngIf="selectedMarket">
+    <div class="place-card" *ngFor="let place of selectedMarket.marketPlaceImages">
+        <mat-card class="mat-elevation-z2">
+            <!-- Display place image -->
+            <img mat-card-image [src]="place.imageURL" alt="{{ place.placeName }}"/>
+            <mat-card-content>
+                <!-- Display place name -->
+                <h4>{{ place.placeName }}</h4>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<!-- If no market is selected, show a message -->
+<div *ngIf="!selectedMarket && markets.length > 0" class="no-selection-message">
+    <p>Please select a market to view its places.</p>
+</div>
+
+<!-- If no markets are available, show a message -->
+<div *ngIf="markets.length === 0" class="no-markets-message">
+    <p>No markets available. Add a new market to get started.</p>
+</div>

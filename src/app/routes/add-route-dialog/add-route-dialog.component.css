@@ -1,0 +1,15 @@
+.full-width {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.file-input-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #757575;
+}
+
+mat-dialog-actions {
+    margin-top: 16px;
+}

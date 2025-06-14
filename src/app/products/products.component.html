@@ -1,1 +1,87 @@
-<p>products works!</p>
+<h1>Products</h1>
+<div class="mat-elevation-z8">
+  <mat-card class="mat-elevation-z0">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        (keyup)="doFilter($event.target.value)"
+        placeholder="Filter"
+      />
+    </mat-form-field>
+<!--    <button-->
+<!--      mat-raised-button-->
+<!--      color="primary"-->
+<!--      [routerLink]="['/dashboard/addproduct']"-->
+<!--      type="button"-->
+<!--      style="float: right"-->
+<!--    >-->
+<!--      + Add Product-->
+<!--    </button>-->
+  </mat-card>
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="productName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.productName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="supplier">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Supplier</th>
+            <td mat-cell *matCellDef="let element">{{ element.supplier }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="wp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Wholesale Price</th>
+            <td mat-cell *matCellDef="let element">{{ element.wp | currency:'USD' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
+            <td mat-cell *matCellDef="let element">{{ element.code }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="barcode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Barcode</th>
+            <td mat-cell *matCellDef="let element">{{ element.barcode }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="packSize">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Pack Size</th>
+            <td mat-cell *matCellDef="let element">{{ element.packSize }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cartoonSize">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Cartoon Size</th>
+            <td mat-cell *matCellDef="let element">{{ element.cartoonSize }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+            <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="unit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit</th>
+            <td mat-cell *matCellDef="let element">{{ element.unit }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="tax">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Tax</th>
+            <td mat-cell *matCellDef="let element">{{ element.tax }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="hsCode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>HS Code</th>
+            <td mat-cell *matCellDef="let element">{{ element.hsCode }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+            <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" class="clickable-row" (click)="goToProductDetail(row.id)"></tr>
+    </table>
+    <mat-paginator [length]="totalProducts" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

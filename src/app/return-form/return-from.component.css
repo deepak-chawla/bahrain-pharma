@@ -1,0 +1,18 @@
+.full-width {
+    width: 100%;
+}
+
+mat-card {
+    margin-bottom: 20px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Align title to the left and search bar to the right */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.search-bar {
+    width: 250px;
+}

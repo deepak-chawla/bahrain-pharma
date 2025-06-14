@@ -1,22 +1,17 @@
 // This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080/api/',
-  authSignInPath: 'auth/signin',
-  authSignUpPath: 'auth/signup',
-  getManfUrl: 'manufacturer/get',
-  updManfUrl: 'manufacturer/create-update',
-  getPrdUrl: 'products/get',
-  updPrdUrl: 'products/create-update',
-  deletePrdUrl: 'products/',
-  getStateUrl: 'data/getStates',
-  getCitiesUrl: 'data/getCities',
-  getCatgUrl: 'data/getCategory',
-  genXcelUrl: 'data/generateXcel/',
-  getOverviewUrl: 'data/getOverview',
+  // applicationUrl: 'localhost',
+  protocol: 'http://',
+  applicationUrl: 'localhost:9000',
+  authService: 'inventory-auth-service',
+  stockManagementService: 'inventory-stock-management-service',
+  productOrderService: 'inventory-product-order-service',
+  rawMaterialOrderService: 'inventory-rawmaterial-order-service',
+  supplierService: 'inventory-supplier-service',
 };
 
 /*

@@ -1,49 +1,21 @@
-import { Injectable } from '@angular/core';
-import { IndividualConfig, ToastrService } from 'ngx-toastr';
+import {Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
+
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: "root"
 })
-export class NotificationService {
+export class NotificationService{
+    private apiUrl = '/api/v1/notification';
 
-  constructor(private toastr: ToastrService) {
-  }
-  showSuccess(message: any, title: any) {
-    this.toastr.success(message, title, {
-      timeOut: 4500,
-      closeButton: true,
-      progressBar: true,
-      tapToDismiss: true
-    })
-  }
+    constructor(private http: HttpClient) {}
 
-  showError(message: any, title: any) {
-    this.toastr.error(message, title, {
-      timeOut: 4500,
-      closeButton: true,
-      progressBar: true,
-      tapToDismiss: true
-    })
-  }
+    sendBroadcastNotification(payload){
+        return this.http.post(`${this.apiUrl}/sendNotificationToAll`,payload);
+    }
 
-  showInfo(message: any, title: any) {
-    this.toastr.info(message, title, {
-      timeOut: 4500,
-      closeButton: true,
-      progressBar: true,
-      tapToDismiss: true
-    })
-  }
-
-  showWarning(message: any, title: any) {
-    this.toastr.warning(message, title, {
-      timeOut: 4500,
-      closeButton: true,
-      progressBar: true,
-      tapToDismiss: true
-    })
-  }
+    sendNotificationToUser(payload){
+        return this.http.post(`${this.apiUrl}/sendNotificationToCustomer`,payload);
+    }
 
 }
-
-

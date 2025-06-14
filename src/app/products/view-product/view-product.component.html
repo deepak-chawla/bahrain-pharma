@@ -1,0 +1,61 @@
+<div class="product-detail-container">
+    <!-- Flex container for two-column layout -->
+    <div class="product-detail-flex">
+        <!-- Left Column: Product Image and Upload Section -->
+        <div class="product-image-section">
+            <mat-card class="product-image-card">
+                <mat-card-header>
+                    <mat-card-title>Product Image</mat-card-title>
+                </mat-card-header>
+                <!-- Display the current or updated product image -->
+                <img mat-card-image
+                     [src]="imagePreview || product?.productImageURL || 'https://via.placeholder.com/300?text=No+Image+Available'"
+                     alt="{{ product?.name }}" class="product-image" />
+                <mat-card-actions>
+                    <!-- File input to select a new image -->
+                    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+                    <p *ngIf="imageSent" class="text-success ml-2">
+                        Image Uploaded successfully!
+                    </p>
+                    <p *ngIf="errorMsg" class="text-danger ml-2">
+                        {{errorMsg}}
+                    </p>
+
+                    <!-- Button to upload the selected image -->
+                    <button mat-raised-button color="primary" (click)="onUpload()" [disabled]="!selectedFile">Update Image</button>
+
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+        <!-- Right Column: Product Details Section -->
+        <div class="product-details-section">
+            <mat-card class="product-detail-card">
+                <mat-card-header>
+                    <mat-card-title>{{ product?.name }}</mat-card-title>
+                    <mat-card-subtitle>{{ product?.categeory?.categoryName }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p><strong>Alias:</strong> {{ product?.alias }}</p>
+                    <p><strong>Barcode:</strong> {{ product?.barcode }}</p>
+                    <p><strong>Pack Size:</strong> {{ product?.packSize }}</p>
+                    <p><strong>Carton Size:</strong> {{ product?.cartonSize }}</p>
+                    <p><strong>Wholesale Price (WP):</strong> {{ product?.wp | currency:'USD' }}</p>
+                    <p><strong>Retail Selling Price (Retail SP):</strong> {{ product?.retailSp | currency:'USD' }}</p>
+                    <p><strong>Taxable:</strong> {{ product?.taxable }}</p>
+                    <p><strong>HS Code:</strong> {{ product?.hsCode }}</p>
+                    <p><strong>Company:</strong> {{ product?.company?.companyName }}</p>
+                    <img [src]="product?.company?.companyImage" alt="{{ product?.company?.companyName }}" width="100">
+                    <p><strong>Country:</strong> {{ product?.country }}</p>
+                    <p><strong>Length (cm):</strong> {{ product?.length }}</p>
+                    <p><strong>Width/Depth (cm):</strong> {{ product?.widthDepth }}</p>
+                    <p><strong>Height (cm):</strong> {{ product?.height }}</p>
+                    <p><strong>Gross Weight (kg):</strong> {{ product?.grossWtPc }}</p>
+                    <p><strong>Generic:</strong> {{ product?.generic }}</p>
+                    <p><strong>Description:</strong> {{ product?.strength }}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
